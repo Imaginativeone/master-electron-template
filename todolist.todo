@@ -1,10 +1,13 @@
 Project:
   Feature: 
-  - Restructure the files
-    - main.js
-    - index.html
+  - Set up DOM element selections
 
 Archive:
+  - Restructure the files @done
+    - main.js @done
+    - index.html @done
+    - renderer.js @done
+    - style.css @done
   - Add CSS File and Code @done
     - Add CSS File @done
   - create todo extension @done
