@@ -1,4 +1,9 @@
+/* html { font-family: sans-serif; background: #2B2E3B; color: #9FEAF9; } */
+
 html {
+  font-family: sans-serif; 
+  background: #2B2E3B;
+  color: #9FEAF9;
   box-sizing: border-box;
 }
 
