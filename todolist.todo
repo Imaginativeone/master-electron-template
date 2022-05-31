@@ -1,9 +1,12 @@
 Project:
   Feature: 
-  - Add CSS File and Code
-    - Add CSS File
+  - Restructure the files
+    - main.js
+    - index.html
 
 Archive:
+  - Add CSS File and Code @done
+    - Add CSS File @done
   - create todo extension @done
     - code @done
     - record gifs @done
