@@ -1,8 +1,9 @@
 Project:
   Feature: 
-  - Render the links
+  - Handle some errors
 
 Archive:
+  - Render the links @done
   - Set up DOM element selections @done
   - Restructure the files @done
     - main.js @done

@@ -22,12 +22,13 @@ newLinkForm.addEventListener('submit', (event) => {
   const url = newLinkUrl.value; // From the input control...
   
   fetch(url)
-  .then(response => response.text())
-  .then(parseResponse)
-  .then(findTitle)
-  .then(title => storeLink(title, url))
-  .then(clearForm)
-  .then(renderLinks)
+    .then(response => response.text())
+    .then(parseResponse)
+    .then(findTitle)
+    .then(title => storeLink(title, url))
+    .then(clearForm)
+    .then(renderLinks)
+    .catch(error => handleError(error, url))
 });
 
 clearStorageButton.addEventListener('click', () => {
@@ -78,6 +79,12 @@ const clearForm = () => {
 const renderLinks = () => {
   const linkElements = getLinks().map(convertToElement).join('');
   linksSection.innerHTML = linkElements;
+};
+
+// TODO handleError()
+const handleError = (error, url) => {
+  errorMessage.innerHTML = `There was an issue adding "${url}": ${error.message}`.trim();
+  setTimeout(() => errorMessage.innerText = null, 5000);
 };
 
 renderLinks();

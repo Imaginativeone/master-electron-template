@@ -5,7 +5,6 @@ const {app, BrowserWindow} = require('electron')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-// TODO: Test Task
 // Create a new BrowserWindow when `app` is ready
 function createWindow () {
 
@@ -15,7 +14,6 @@ function createWindow () {
       // --- !! IMPORTANT !! ---
       // Disable 'contextIsolation' to allow 'nodeIntegration'
       // 'contextIsolation' defaults to "true" as from Electron v12
-      // TODO Hello
       contextIsolation: false,
       nodeIntegration: true
     }
