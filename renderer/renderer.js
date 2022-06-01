@@ -1,5 +1,4 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
+// This file is required by the index.html file and will be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
 const linksSection       = document.querySelector('.links');
@@ -16,3 +15,27 @@ newLinkUrl.addEventListener('keyup', () => {
 const clearForm = () => {
   newLinkUrl.value = null;
 };
+
+newLinkForm.addEventListener('submit', (event) => {
+
+  event.preventDefault();
+
+  const url = newLinkUrl.value; // From the input control...
+
+  // More code to come...
+  console.log('url', url);
+
+  fetch(url)
+    .then((response) => {
+      console.log('response', response);
+      // console.log('response.text()', response.text());
+      return response.text();
+    })
+    .then((info) => {
+
+      console.log('info', info);
+      console.log('url', url); // From line 23
+
+    })
+
+});
