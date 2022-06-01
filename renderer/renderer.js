@@ -30,7 +30,7 @@ newLinkForm.addEventListener('submit', (event) => {
     .then(findTitle)
     .then(title => storeLink(title, url))
     .then(clearForm)
-    .then(getLinks)
+    .then(renderLinks)
 });
 
 // Helper functions for zero-ing in on the <title> element
@@ -54,3 +54,23 @@ const getLinks = () => {
   // console.log('keys', Object.keys(localStorage));
   return Object.keys(localStorage).map(key => JSON.parse(localStorage.getItem(key)));
 }
+
+// TODO Render the links: Convert to Element, Render the Element
+const convertToElement = (link) => {
+  return `
+    <div class="link">
+      <h3>${link.title}</h3>
+      <p>
+        <a href="${link.url}">${link.url}</a>
+      </p>
+    </div>
+  `
+};
+
+// TODO renderLinks()
+const renderLinks = () => {
+  const linkElements = getLinks().map(convertToElement).join('');
+  linksSection.innerHTML = linkElements;
+};
+
+renderLinks();

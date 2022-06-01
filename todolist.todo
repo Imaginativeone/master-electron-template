@@ -1,8 +1,9 @@
 Project:
   Feature: 
-  - Set up DOM element selections
+  - Render the links
 
 Archive:
+  - Set up DOM element selections @done
   - Restructure the files @done
     - main.js @done
     - index.html @done
