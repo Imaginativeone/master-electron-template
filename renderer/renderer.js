@@ -11,27 +11,30 @@ const newLinkUrl         = document.querySelector('.new-link-url');
 const newLinkSubmit      = document.querySelector('.new-link-submit');
 const clearStorageButton = document.querySelector('.clear-storage');
 
+// Listeners ////////////////////
 newLinkUrl.addEventListener('keyup', () => {
   newLinkSubmit.disabled = !newLinkUrl.validity.valid;
 });
 
-const clearForm = () => {
-  newLinkUrl.value = null;
-};
-
 newLinkForm.addEventListener('submit', (event) => {
   event.preventDefault();
-
+  
   const url = newLinkUrl.value; // From the input control...
-
+  
   fetch(url)
-    .then(response => response.text())
-    .then(parseResponse)
-    .then(findTitle)
-    .then(title => storeLink(title, url))
-    .then(clearForm)
-    .then(renderLinks)
+  .then(response => response.text())
+  .then(parseResponse)
+  .then(findTitle)
+  .then(title => storeLink(title, url))
+  .then(clearForm)
+  .then(renderLinks)
 });
+
+clearStorageButton.addEventListener('click', () => {
+  localStorage.clear();
+  linksSection.innerHTML = '';
+});
+// End of Listeners ////////////////////
 
 // Helper functions for zero-ing in on the <title> element
 // See the definition of a "calculation" in the book, "Grokking Simplicity" by Eric Normand - 
@@ -58,13 +61,17 @@ const getLinks = () => {
 // TODO Render the links: Convert to Element, Render the Element
 const convertToElement = (link) => {
   return `
-    <div class="link">
+  <div class="link">
       <h3>${link.title}</h3>
       <p>
-        <a href="${link.url}">${link.url}</a>
+      <a href="${link.url}">${link.url}</a>
       </p>
-    </div>
+      </div>
   `
+};
+
+const clearForm = () => {
+  newLinkUrl.value = null;
 };
 
 // TODO renderLinks()
