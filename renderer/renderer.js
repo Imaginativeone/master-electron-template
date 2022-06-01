@@ -82,9 +82,16 @@ const renderLinks = () => {
 };
 
 // TODO handleError()
+// Error(s) 400, 500
 const handleError = (error, url) => {
   errorMessage.innerHTML = `There was an issue adding "${url}": ${error.message}`.trim();
   setTimeout(() => errorMessage.innerText = null, 5000);
+};
+
+// TODO validateResponse(response)
+const validateResponse = (response) => {
+  if (response.ok) { return response; }
+  throw new Error (`Status code of ${response.status} ${response.statusText}`);
 };
 
 renderLinks();
