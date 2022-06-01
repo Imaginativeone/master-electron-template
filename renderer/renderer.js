@@ -28,6 +28,8 @@ newLinkForm.addEventListener('submit', (event) => {
     .then(response => response.text())
     .then(parseResponse)
     .then(findTitle)
+    .then(title => storeLink(title, url))
+    .then(clearForm)
 });
 
 // Helper functions for zero-ing in on the <title> element
@@ -42,3 +44,7 @@ const findTitle = (nodes) => {
   // console.log(nodes.querySelector('title').innerText);
   return nodes.querySelector('title').innerText;
 }
+
+const storeLink = (title, url) => {
+  localStorage.setItem(url, JSON.stringify({ title: title, url: url }));
+};
